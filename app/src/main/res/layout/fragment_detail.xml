@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="product"
+        type="com.example.androidjetpackkotlin.model.ProductDetail"/>
+    </data>
+
+
+<RelativeLayout
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/buttons">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.DetailFragment">
+
+        <ImageView
+            android:id="@+id/productImg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/target_logo"
+            android:imageUrl="@{product.image_url}"
+            android:scaleType="fitCenter"
+            android:layout_weight="3"
+            android:minHeight="200dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_weight="2"
+            >
+
+        <TextView
+            android:id="@+id/discountPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reg : $170.99"
+            android:theme="@style/RedTitle"
+
+            />
+
+        <TextView
+            android:id="@+id/originalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reg : $17.99"
+            android:setOriginalPrice="@{product.regular_price.display_string}"
+            android:layout_alignParentEnd="true"
+            android:theme="@style/Text"
+            android:textSize="20sp"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:id="@+id/style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/discountPrice"
+            android:text="@{product.title}"
+            android:textSize="25sp"
+            android:theme="@style/Text"
+
+            />
+
+
+        <TextView
+            android:id="@+id/productDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/style"
+            android:layout_marginTop="10dp"
+            android:text="@{product.description}"
+            android:theme="@style/Title" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="ADD TO LIST"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:background="@color/light_grey"
+            android:textColor="@color/gray_color"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@android:color/holo_red_dark"
+            android:text="ADD TO CART"
+            />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>
+
+</layout>
